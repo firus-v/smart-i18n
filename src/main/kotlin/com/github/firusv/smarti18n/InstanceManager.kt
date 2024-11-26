@@ -2,7 +2,6 @@ package com.github.firusv.smarti18n
 
 import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.project.Project
-import com.github.firusv.smarti18n.model.action.TranslationUpdate
 import java.util.*
 
 /**

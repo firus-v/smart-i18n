@@ -23,7 +23,7 @@ class TranslationData
  * @param locales Языки, которые могут быть использованы для перевода
  * @param rootNode Структура дерева переводов
  */(
-    private val locales: MutableSet<String?>,
+    private val locales: MutableSet<String>,
     /**
      * @return Корневой узел, содержащий все переводы
      */
@@ -34,14 +34,14 @@ class TranslationData
      * @param sort Должны ли ключи переводов сортироваться в алфавитном порядке
      */
     constructor(sort: Boolean) : this(
-        HashSet<String?>(),
+        HashSet<String>(),
         TranslationNode(if (sort) TreeMap<String, TranslationNode>() else LinkedHashMap<String, TranslationNode>())
     )
 
     /**
      * @return Набор языков, на которые могут быть выполнены переводы
      */
-    fun getLocales(): Set<String?> {
+    fun getLocales(): Set<String> {
         return this.locales
     }
 
