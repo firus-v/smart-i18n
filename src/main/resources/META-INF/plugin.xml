@@ -10,8 +10,14 @@
     <resource-bundle>messages.messages</resource-bundle>
 
     <extensions defaultExtensionNs="com.intellij">
+        <!-- Панель настроек редактора -->
         <projectConfigurable instance="com.github.firusv.smarti18n.settings.ProjectSettingsConfigurable"
                              parentId="tools" displayName="Smart I18n"/>
+
+        <!-- Рабочая панель -->
+        <toolWindow id="Smart I18n" anchor="bottom"
+                    factoryClass="com.github.firusv.smarti18n.service.TranslatorToolWindowFactory"
+                    icon="/smart-icon.svg"/>
     </extensions>
 
     <applicationListeners>
