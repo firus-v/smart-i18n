@@ -27,6 +27,7 @@ class ProjectSettingsComponent(private val project: Project) : ProjectSettingsCo
         mainPanel = FormBuilder.createFormBuilder()
             .addComponent(getFileList())
             .addLabeledComponent(bundle.message("settings.defaultLang.title"), getDefaultLang())
+            .addLabeledComponent(bundle.message("settings.delimiter.title"), getDelimiter())
             .addComponentFillVertically(JPanel(), 0)
             .panel
     }
@@ -102,6 +103,10 @@ class ProjectSettingsComponent(private val project: Project) : ProjectSettingsCo
         defaultLang.setMinimumAndPreferredWidth(200)
 
         return defaultLang
+    }
+
+    private fun getDelimiter(): JComponent{
+        return delimiter
     }
 
     private fun checkRemoveButton(){

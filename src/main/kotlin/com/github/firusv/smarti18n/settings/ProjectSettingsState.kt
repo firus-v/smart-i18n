@@ -14,6 +14,7 @@ import javax.swing.ListModel
 open class ProjectSettingsState {
     private var fileList: String = ""
     private var defaultLang: String = ""
+    private var delimiter: String = "."
 
     fun setFileList(model: ListModel<VirtualFile>) {
         val list = ArrayList<String>();
@@ -26,6 +27,10 @@ open class ProjectSettingsState {
     fun setDefaultLang(model: ComboBoxModel<String>) {
         var index = model.selectedItem.toString();
         defaultLang = index
+    }
+
+    fun setDelimiter(value: String){
+        delimiter = value
     }
 
     fun getDefaultLang(fileListModel: ListModel<VirtualFile> = getFileList()): ComboBoxModel<String>{
@@ -51,6 +56,10 @@ open class ProjectSettingsState {
             }
         }
         return model
+    }
+
+    fun getDelimiter(): String{
+        return delimiter
     }
 
     private fun exists(parent: String, child: String): Boolean {
