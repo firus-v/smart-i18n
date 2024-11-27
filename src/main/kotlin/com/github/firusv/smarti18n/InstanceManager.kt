@@ -1,95 +1,86 @@
 package com.github.firusv.smarti18n
 
+import com.github.firusv.smarti18n.model.action.TranslationUpdate
 import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.project.Project
+import org.jetbrains.annotations.NotNull
 import java.util.*
 
 /**
- * Central singleton component for managing an easy-i18n instance for a specific project.
- * @author marhali
+ * Центральный синглтон для управления экземпляром easy-i18n для конкретного проекта.
+ * @author firus
  */
-class InstanceManager private constructor(project: Project) {
-    private val store: DataStore
-    private val bus: DataBus
-    private val uiBus: FilteredDataBus
+class InstanceManager private constructor(@NotNull project: Project) {
+
+    private val store: DataStore = DataStore(project)
+    private val bus: DataBus = DataBus()
+    private val uiBus: FilteredDataBus = FilteredDataBus(project)
 
     init {
-        this.store = DataStore(project)
-        this.bus = DataBus()
-        this.uiBus = FilteredDataBus(project)
+        // Регистрация UI eventbus поверх основного eventbus
+        bus.addListener(uiBus)
 
-        // Register ui eventbus on top of the normal eventbus
-        bus.addListener(this.uiBus)
-
-        // Load data after first initialization
+        // Загрузка данных после первой инициализации
         ApplicationManager.getApplication().invokeLater {
             store.loadFromPersistenceLayer { success ->
-                bus.propagate()
-                    .onUpdateData(store.getData())
+                bus.propagate().onUpdateData(store.data)
             }
         }
     }
 
-    fun store(): DataStore {
-        return this.store
-    }
+    fun store(): DataStore = store
 
     /**
-     * Primary eventbus.
+     * Основной eventbus.
      */
-    fun bus(): DataBus {
-        return this.bus
-    }
+    fun bus(): DataBus = bus
 
     /**
-     * UI optimized eventbus with builtin filter logic.
+     * Оптимизированный UI eventbus с встроенной логикой фильтрации.
      */
-    fun uiBus(): FilteredDataBus {
-        return this.uiBus
-    }
+    fun uiBus(): FilteredDataBus = uiBus
 
     /**
-     * Reloads the plugin instance. Unsaved cached data will be deleted.
-     * Fetches data from persistence layer and notifies all endpoints via [DataBus].
+     * Перезагружает экземпляр плагина. Несохранённые кэшированные данные будут удалены.
+     * Загружает данные из слоя хранения и уведомляет все конечные точки через {@link DataBus}.
      */
     fun reload() {
-        store.loadFromPersistenceLayer { success -> bus.propagate().onUpdateData(store.getData()) }
+        store.loadFromPersistenceLayer { success ->
+            bus.propagate().onUpdateData(store.getData())
+        }
     }
 
     fun processUpdate(update: TranslationUpdate) {
-        if (update.isDeletion() || update.isKeyChange()) { // Remove origin translation
-            store.getData().setTranslation(update.getOrigin().getKey(), null)
+        if (update.isDeletion || update.isKeyChange) { // Удаление оригинального перевода
+            update.origin?.key?.let { store.getData().setTranslation(it, null) }
         }
 
-        if (!update.isDeletion()) { // Create or re-create translation with changed data
-            store.getData().setTranslation(update.getChange().getKey(), update.getChange().getValue())
+        if (!update.isDeletion) { // Создание или обновление перевода с изменёнными данными
+            update.change?.let {
+                store.getData().setTranslation(it.key, it.getValue())
+            }
         }
 
         store.saveToPersistenceLayer { success ->
             if (success) {
                 bus.propagate().onUpdateData(store.getData())
 
-                if (!update.isDeletion()) {
-                    bus.propagate().onFocusKey(update.getChange().getKey())
+                val keyToFocus = if (!update.isDeletion) {
+                    update.change?.key
                 } else {
-                    bus.propagate().onFocusKey(update.getOrigin().getKey())
+                    update.origin?.key
                 }
+
+                keyToFocus?.let { bus.propagate().onFocusKey(it) }
             }
         }
     }
 
     companion object {
-        private val INSTANCES: MutableMap<Project, InstanceManager> = WeakHashMap()
+        private val INSTANCES = WeakHashMap<Project, InstanceManager>()
 
-        fun get(project: Project): InstanceManager {
-            var instance = INSTANCES[project]
-
-            if (instance == null) {
-                instance = InstanceManager(project)
-                INSTANCES[project] = instance
-            }
-
-            return instance
+        fun get(@NotNull project: Project): InstanceManager {
+            return INSTANCES.getOrPut(project) { InstanceManager(project) }
         }
     }
 }

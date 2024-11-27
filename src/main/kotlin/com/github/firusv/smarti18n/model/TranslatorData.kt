@@ -73,7 +73,7 @@ class TranslationData
         return node
     }
 
-    fun getOrCreateNoe(fullPath: KeyPath): TranslationNode {
+    fun getOrCreateNode(fullPath: KeyPath): TranslationNode {
         var node = this.rootNode
 
         if (fullPath.isEmpty()) { // Возвращает корневой узел, если путь пустой
