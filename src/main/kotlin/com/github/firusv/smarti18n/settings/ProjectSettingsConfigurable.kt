@@ -1,5 +1,6 @@
 package com.github.firusv.smarti18n.settings
 
+import com.github.firusv.smarti18n.InstanceManager
 import com.intellij.openapi.options.Configurable
 import com.intellij.openapi.project.Project
 import javax.swing.JComponent
@@ -29,6 +30,7 @@ class ProjectSettingsConfigurable(private val project: Project) : Configurable {
     override fun apply() {
         val service = ProjectSettingsService.get(project)
         service.state = component.getState()
+        InstanceManager.get(project).reload()
     }
 
     override fun reset() {

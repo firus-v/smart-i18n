@@ -25,7 +25,7 @@ class TreeModelMapper(
 ) : DefaultTreeModel(null) {
 
     init {
-        val rootNode = DefaultMutableTreeNode()
+        val rootNode = DefaultMutableTreeNode("userObject")
         generateNodes(rootNode, KeyPath(), data.rootNode)
         setRoot(rootNode)
     }

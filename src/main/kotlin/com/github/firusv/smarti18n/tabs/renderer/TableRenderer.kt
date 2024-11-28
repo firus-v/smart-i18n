@@ -66,7 +66,12 @@ class TableRenderer : DefaultTableCellRenderer() {
             }
 
             for (column in 1 until columns) {
-                if (contents.contains(table.getValueAt(row, column).toString())) {
+                val data = table.getValueAt(row, column);
+                if(data === null){
+                    return false
+                }
+
+                if (contents.contains(data.toString())) {
                     return true
                 }
             }
