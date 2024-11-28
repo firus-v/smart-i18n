@@ -23,7 +23,7 @@ class InstanceManager private constructor(@NotNull project: Project) {
         // Загрузка данных после первой инициализации
         ApplicationManager.getApplication().invokeLater {
             store.loadFromPersistenceLayer { success ->
-                bus.propagate().onUpdateData(store.data)
+                bus.propagate().onUpdateData(store.getData())
             }
         }
     }
