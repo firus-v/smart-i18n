@@ -44,7 +44,7 @@ class TableView(private val project: Project) : FilteredBusListener {
         if (row < 0) return
 
         val fullPath = converter.fromString(table.getValueAt(row, 0).toString())
-        val value = InstanceManager.get(project).store().data.getTranslation(fullPath)
+        val value = InstanceManager.get(project).store().getData().getTranslation(fullPath)
 
         value?.let {
             // TODO доделать диалоговое окно редактирования

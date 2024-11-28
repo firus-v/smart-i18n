@@ -100,7 +100,7 @@ class TreeView(private val project: Project) : FilteredBusListener {
         if (node.userObject !is PresentationData) return
 
         val fullPath = TreeUtil.getFullPath(path)
-        InstanceManager.get(project).store().data.getTranslation(fullPath) ?: return
+        InstanceManager.get(project).store().getData().getTranslation(fullPath) ?: return
 
         // TODO добавить редактирование перевода для TreeView
 //        EditDialog(project, Translation(fullPath, value)).showAndHandle()
