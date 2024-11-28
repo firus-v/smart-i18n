@@ -1,5 +1,6 @@
 package com.github.firusv.smarti18n.service
 
+import com.github.firusv.smarti18n.MessagesBundle
 import com.intellij.ide.BrowserUtil
 import com.intellij.ide.DataManager
 import com.intellij.ide.plugins.IdeaPluginDescriptor
@@ -29,7 +30,7 @@ class ErrorReportHandler : ErrorReportSubmitter() {
 
     @NlsActions.ActionText
     override fun getReportActionText(): String {
-        return ResourceBundle.getBundle("messages").getString("error.submit")
+        return MessagesBundle.message("error.submit")
     }
 
     override fun submit(

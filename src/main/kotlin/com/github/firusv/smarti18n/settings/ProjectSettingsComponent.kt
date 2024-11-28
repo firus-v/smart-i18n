@@ -8,6 +8,7 @@ import com.intellij.openapi.ui.ComboBox
 import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.ui.components.JBList
 import com.intellij.ui.components.JBScrollPane
+import com.intellij.ui.components.JBTextField
 import com.intellij.util.ui.FormBuilder
 import java.awt.BorderLayout
 import java.util.*
@@ -106,6 +107,7 @@ class ProjectSettingsComponent(private val project: Project) : ProjectSettingsCo
     }
 
     private fun getDelimiter(): JComponent{
+        delimiter = JBTextField()
         return delimiter
     }
 

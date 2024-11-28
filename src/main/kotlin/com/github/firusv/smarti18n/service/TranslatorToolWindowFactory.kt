@@ -1,6 +1,7 @@
 package com.github.firusv.smarti18n.service
 
 import com.github.firusv.smarti18n.InstanceManager
+import com.github.firusv.smarti18n.MessagesBundle
 import com.github.firusv.smarti18n.tabs.TableView
 import com.github.firusv.smarti18n.tabs.TreeView
 import com.intellij.openapi.project.DumbAware
@@ -26,7 +27,7 @@ class TranslatorToolWindowFactory : ToolWindowFactory, DumbAware {
         val treeView: TreeView = TreeView(project)
         val treeContent = contentFactory.createContent(
             treeView.getRootPanel(),
-            ResourceBundle.getBundle("messages").getString("view.tree.title"), false
+            MessagesBundle.message("view.tree.title"), false
         )
 
         toolWindow.contentManager.addContent(treeContent)
@@ -35,7 +36,7 @@ class TranslatorToolWindowFactory : ToolWindowFactory, DumbAware {
         val tableView: TableView = TableView(project)
         val tableContent: Content = contentFactory.createContent(
             tableView.getRootPanel(),
-            ResourceBundle.getBundle("messages").getString("view.table.title"), false
+            MessagesBundle.message("view.table.title"), false
         )
 
         toolWindow.contentManager.addContent(tableContent)

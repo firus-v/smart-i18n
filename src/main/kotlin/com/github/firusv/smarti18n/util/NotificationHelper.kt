@@ -1,5 +1,6 @@
 package com.github.firusv.smarti18n.util
 
+import com.github.firusv.smarti18n.MessagesBundle
 import com.github.firusv.smarti18n.exception.SyntaxException
 import com.github.firusv.smarti18n.settings.ProjectSettingsState
 import com.intellij.notification.Notification
@@ -32,11 +33,10 @@ object NotificationHelper {
 //    }
 
     fun createBadSyntaxNotification(project: Project, ex: SyntaxException) {
-        val bundle = ResourceBundle.getBundle("messages")
 
         val notification = Notification(
             NOTIFICATION_GROUP,
-            bundle.getString("warning.bad-syntax"),
+            MessagesBundle.message("warning.bad-syntax"),
             ex.message ?: "",
             NotificationType.ERROR
         )
