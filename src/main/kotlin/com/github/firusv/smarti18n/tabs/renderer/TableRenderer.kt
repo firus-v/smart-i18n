@@ -34,8 +34,6 @@ class TableRenderer : DefaultTableCellRenderer() {
 
         if (missesValues(row, table)) {
             component.foreground = JBColor.RED
-        } else if (hasDuplicates(row, table)) {
-            component.foreground = JBColor.ORANGE
         }
 
         return component

@@ -68,10 +68,6 @@ class TreeModelMapper(
                 if (childTranslationNode.value.size() !== this.data.getLocales().size) {
                     data.forcedTextForeground = JBColor.RED
                     color = JBColor.RED
-                } else if (TranslationUtil.hasDuplicates(Translation(keyPath, childTranslationNode.value), this.data)
-                ) {
-                    data.forcedTextForeground = JBColor.ORANGE
-                    color = JBColor.ORANGE
                 }
 
 

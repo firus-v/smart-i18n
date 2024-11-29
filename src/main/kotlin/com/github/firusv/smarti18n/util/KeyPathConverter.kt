@@ -38,11 +38,9 @@ class KeyPathConverter {
         val builder = StringBuilder()
 
         for (i in 0 until path.size) {
-            if (i > 0) { // Разделители
-                if (i == 1) {
-                    // TODO подумать об экранировании разделителей
-                    builder.append(settings.getDelimiter())
-                }
+            if (i > 0 && i < path.size) { // Разделители
+                // TODO подумать об экранировании разделителей
+                builder.append(settings.getDelimiter())
             }
 
             // Содержимое секции

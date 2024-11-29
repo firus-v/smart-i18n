@@ -9,8 +9,10 @@ import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.ui.components.JBList
 import com.intellij.ui.components.JBScrollPane
 import com.intellij.ui.components.JBTextField
+import com.intellij.ui.util.maximumWidth
 import com.intellij.util.ui.FormBuilder
 import java.awt.BorderLayout
+import java.awt.Dimension
 import java.util.*
 import javax.swing.*
 import javax.swing.event.ListSelectionEvent
@@ -87,7 +89,7 @@ class ProjectSettingsComponent(private val project: Project) : ProjectSettingsCo
         }
         // Установка фиксированной высоты для прокручиваемой области списка
         val scrollPane = JBScrollPane(fileList).apply {
-            preferredSize = java.awt.Dimension(preferredSize.width, 250) // Ограничиваем только высоту
+            preferredSize = java.awt.Dimension(preferredSize.width, 170) // Ограничиваем только высоту
         }
 
         // Добавление в панель списка и кнопок
@@ -108,7 +110,10 @@ class ProjectSettingsComponent(private val project: Project) : ProjectSettingsCo
 
     private fun getDelimiter(): JComponent{
         delimiter = JBTextField()
-        return delimiter
+        delimiter.preferredSize = Dimension(72, delimiter.preferredSize.height)
+        val panel = JPanel(BorderLayout())
+        panel.add(delimiter, BorderLayout.WEST)
+        return panel
     }
 
     private fun checkRemoveButton(){
