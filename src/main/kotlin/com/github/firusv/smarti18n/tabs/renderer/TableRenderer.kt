@@ -13,13 +13,17 @@ import javax.swing.table.DefaultTableCellRenderer
 class TableRenderer : DefaultTableCellRenderer() {
     override fun getTableCellRendererComponent(
         table: JTable,
-        value: Any,
+        value: Any?,
         isSelected: Boolean,
         hasFocus: Boolean,
         row: Int,
         column: Int
     ): Component {
-        val component = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column)
+        var data = value
+        if(value == null) {
+            data = ""
+        }
+        val component = super.getTableCellRendererComponent(table, data, isSelected, hasFocus, row, column)
 
         // Always reset color
         component.foreground = null
