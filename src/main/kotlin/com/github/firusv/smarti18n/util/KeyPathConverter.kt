@@ -58,8 +58,9 @@ class KeyPathConverter {
     fun fromString(@NotNull literalPath: String): KeyPath {
         val path = KeyPath()
         var i = 0
+        val list = literalPath.split(settings.getDelimiter())
 
-        for (section in literalPath.split(getSplitRegex().toRegex())) {
+        for (section in list) {
             path.add(section)
             i++
         }
@@ -76,7 +77,7 @@ class KeyPathConverter {
      */
 
     private fun getSplitRegex(): String {
-        return Pattern.quote("\\") + getSplitCharsRegex()
+        return Pattern.quote("\\") + settings.getDelimiter()
     }
 
     private fun getSplitCharsRegex(): String {

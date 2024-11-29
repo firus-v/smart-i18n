@@ -15,28 +15,28 @@
 <!--                implementationClass="de.marhali.easyi18n.assistance.documentation.CommonDocumentationProvider"-->
 <!--        />-->
 
-<!--        <lang.foldingBuilder-->
-<!--                language="JavaScript"-->
-<!--                implementationClass="de.marhali.easyi18n.assistance.folding.JsFoldingBuilder"-->
-<!--        />-->
+        <lang.foldingBuilder
+                language="JavaScript"
+                implementationClass="com.github.firusv.smarti18n.assistance.folding.JsFoldingBuilder"
+        />
 
-<!--        <lang.foldingBuilder-->
-<!--                language="TypeScript"-->
-<!--                implementationClass="de.marhali.easyi18n.assistance.folding.JsFoldingBuilder"-->
-<!--        />-->
+        <lang.foldingBuilder
+                language="TypeScript"
+                implementationClass="com.github.firusv.smarti18n.assistance.folding.JsFoldingBuilder"
+        />
 
-<!--        <lang.foldingBuilder-->
-<!--                language="TypeScript JSX"-->
-<!--                implementationClass="de.marhali.easyi18n.assistance.folding.JsFoldingBuilder"-->
-<!--        />-->
+        <lang.foldingBuilder
+                language="TypeScript JSX"
+                implementationClass="com.github.firusv.smarti18n.assistance.folding.JsFoldingBuilder"
+        />
 
 <!--        <intentionAction>-->
 <!--            <className>de.marhali.easyi18n.assistance.intention.JsTranslationIntention</className>-->
 <!--        </intentionAction>-->
 
-<!--        <completion.contributor-->
-<!--                language="JavaScript"-->
-<!--                implementationClass="de.marhali.easyi18n.assistance.completion.JsCompletionContributor"-->
-<!--        />-->
+        <completion.contributor
+                language="JavaScript"
+                implementationClass="com.github.firusv.smarti18n.assistance.completion.JsCompletionContributor"
+        />
     </extensions>
 </idea-plugin>
