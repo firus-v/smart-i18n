@@ -5,7 +5,6 @@
     <vendor>firus-v</vendor>
 
     <depends>com.intellij.modules.platform</depends>
-    <depends>JavaScript</depends>
 
     <resource-bundle>messages.MyBundle</resource-bundle>
 
