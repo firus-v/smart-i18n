@@ -44,6 +44,14 @@ jobs:
       - name: Gradle Wrapper Validation
         uses: gradle/actions/wrapper-validation@v3
 
+      - name: Check disk usage
+        run: df -h
+
+      - name: Clean temporary directories
+        run: |
+          rm -rf /tmp/*
+          sudo rm -rf /home/runner/work/_temp/*
+
       # Set up Java environment for the next steps
       - name: Setup Java
         uses: actions/setup-java@v4
