@@ -1,0 +1,20 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+<idea-plugin>
+    <id>com.github.firusv.smarti18n</id>
+    <name>smart-i18n</name>
+    <vendor>firus-v</vendor>
+
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.lang</depends>
+    <depends>JavaScript</depends>
+
+    <resource-bundle>messages.MyBundle</resource-bundle>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <toolWindow factoryClass="com.github.firusv.smarti18n.toolWindow.MyToolWindowFactory" id="MyToolWindow"/>
+    </extensions>
+
+    <applicationListeners>
+        <listener class="com.github.firusv.smarti18n.listeners.MyApplicationActivationListener" topic="com.intellij.openapi.application.ApplicationActivationListener"/>
+    </applicationListeners>
+</idea-plugin>
