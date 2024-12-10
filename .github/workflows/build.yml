@@ -49,7 +49,6 @@ jobs:
 
       - name: Clean temporary directories
         run: |
-          rm -rf /tmp/*
           sudo rm -rf /home/runner/work/_temp/*
 
       # Set up Java environment for the next steps
