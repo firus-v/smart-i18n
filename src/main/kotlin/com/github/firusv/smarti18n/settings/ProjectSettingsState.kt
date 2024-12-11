@@ -14,6 +14,19 @@ open class ProjectSettingsState {
     private var defaultLang: String = ""
     private var delimiter: String = "."
 
+    private var showDuplicates: Boolean = true
+    private var showMissingTranslates: Boolean = true
+    private var showTableView: Boolean = true
+    private var showTreeView: Boolean = true
+    private var showCurrentFile: Boolean = true
+    private var showFoldingTranslate: Boolean = true
+    private var alwaysFoldingTranslate: Boolean = true
+    private var showCodeAssistant: Boolean = true
+
+    private var deeplEnabled: Boolean = true
+    private var deeplApiKey: String = ""
+
+
     fun setFileList(model: ListModel<VirtualFile>) {
         val list = ArrayList<String>()
         for (index in 0 until model.size) {
@@ -27,17 +40,17 @@ open class ProjectSettingsState {
         defaultLang = index
     }
 
-    fun setDelimiter(value: String){
+    fun setDelimiter(value: String) {
         delimiter = value
     }
 
-    fun getDefaultLang(fileListModel: ListModel<VirtualFile> = getFileList()): ComboBoxModel<String>{
+    fun getDefaultLang(fileListModel: ListModel<VirtualFile> = getFileList()): ComboBoxModel<String> {
         val model = DefaultComboBoxModel<String>()
 
-        for(index in 0 until fileListModel.size){
+        for (index in 0 until fileListModel.size) {
             model.addElement(fileListModel.getElementAt(index).nameWithoutExtension)
         }
-        if(defaultLang != ""){
+        if (defaultLang != "") {
             model.selectedItem = defaultLang
         }
 
@@ -48,9 +61,9 @@ open class ProjectSettingsState {
         val model = DefaultListModel<VirtualFile>()
         val list = fileList.split(":fileSeparator:").toTypedArray()
         for (index in list.indices) {
-            if(list[index].isEmpty()) continue
+            if (list[index].isEmpty()) continue
             val file = File(list[index])
-            if(file.exists()){
+            if (file.exists()) {
                 val vf = LocalFileSystem.getInstance().findFileByIoFile(file)
                 model.addElement(vf)
             }
@@ -58,9 +71,90 @@ open class ProjectSettingsState {
         return model
     }
 
-    fun getDelimiter(): String{
+    fun getDelimiter(): String {
         return delimiter
     }
+
+    fun getShowDuplicates(): Boolean {
+        return showDuplicates
+    }
+
+    fun getShowMissingTranslates(): Boolean {
+        return showMissingTranslates
+    }
+
+    fun getShowTableView(): Boolean {
+        return showTableView
+    }
+
+    fun getShowTreeView(): Boolean {
+        return showTreeView
+    }
+
+    fun getShowCurrentFile(): Boolean {
+        return showCurrentFile
+    }
+
+    fun getShowFoldingTranslate(): Boolean {
+        return showFoldingTranslate
+    }
+
+    fun getAlwaysFoldingTranslate(): Boolean {
+        return alwaysFoldingTranslate
+    }
+
+    fun getShowCodeAssistant(): Boolean {
+        return showCodeAssistant
+    }
+
+    fun setShowDuplicates(v: Boolean) {
+        showDuplicates = v
+    }
+
+    fun setShowMissingTranslates(v: Boolean) {
+        showMissingTranslates = v
+    }
+
+    fun setShowTableView(v: Boolean) {
+        showTableView = v
+    }
+
+    fun setShowTreeView(v: Boolean) {
+        showTreeView = v
+    }
+
+    fun setShowCurrentFile(v: Boolean) {
+        showCurrentFile = v
+    }
+
+    fun setShowFoldingTranslate(v: Boolean) {
+        showFoldingTranslate = v
+    }
+
+    fun setAlwaysFoldingTranslate(v: Boolean) {
+        alwaysFoldingTranslate = v
+    }
+
+    fun setShowCodeAssistant(v: Boolean) {
+        showCodeAssistant = v
+    }
+
+    fun getDeeplEnabled(): Boolean {
+        return deeplEnabled
+    }
+
+    fun setDeeplEnabled(v: Boolean) {
+        deeplEnabled = v
+    }
+
+    fun getDeeplApiKey(): String {
+        return deeplApiKey
+    }
+
+    fun setDeeplApiKey(v: String) {
+        deeplApiKey = v
+    }
+
 
     private fun exists(parent: String, child: String): Boolean {
         return LocalFileSystem.getInstance().findFileByIoFile(File(parent, child)) != null

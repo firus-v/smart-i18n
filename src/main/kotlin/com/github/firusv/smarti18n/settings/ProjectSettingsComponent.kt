@@ -6,6 +6,7 @@ import com.intellij.openapi.fileChooser.FileChooserDescriptor
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.ui.ComboBox
 import com.intellij.openapi.vfs.VirtualFile
+import com.intellij.ui.TitledSeparator
 import com.intellij.ui.components.JBList
 import com.intellij.ui.components.JBScrollPane
 import com.intellij.ui.components.JBTextField
@@ -26,19 +27,78 @@ class ProjectSettingsComponent(private val project: Project) : ProjectSettingsCo
 
     init {
         mainPanel = FormBuilder.createFormBuilder()
+            .addComponent(TitledSeparator(bundle.message("settings.translate.title")))
             .addComponent(getFileList())
-            .addLabeledComponent(bundle.message("settings.defaultLang.title"), getDefaultLang())
-            .addLabeledComponent(bundle.message("settings.delimiter.title"), getDelimiter())
+            .addLabeledComponent(bundle.message("settings.translate.defaultLang.title"), getDefaultLang())
+            .addLabeledComponent(bundle.message("settings.translate.delimiter"), getDelimiter())
+            .addComponent(TitledSeparator(bundle.message("settings.view.title")))
+            .addComponent(getViewOptionsGroup())
+            .addComponent(TitledSeparator(bundle.message("settings.deepl.title")))
+            .addComponent(getDeeplGroup())
             .addComponentFillVertically(JPanel(), 0)
             .panel
+    }
+
+    private fun getViewOptionsGroup(): JComponent {
+        val form = FormBuilder.createFormBuilder()
+
+        showDuplicates = JCheckBox()
+        showDuplicates.text = bundle.message("settings.view.showDuplicates")
+        showMissingTranslates = JCheckBox()
+        showMissingTranslates.text = bundle.message("settings.view.showMissingTranslates")
+        showTableView = JCheckBox()
+        showTableView.text = bundle.message("settings.view.showTableView")
+        showTreeView = JCheckBox()
+        showTreeView.text = bundle.message("settings.view.showTreeView")
+        showCurrentFile = JCheckBox()
+        showCurrentFile.text = bundle.message("settings.view.showCurrentFile")
+        showFoldingTranslate = JCheckBox()
+        showFoldingTranslate.text = bundle.message("settings.view.showFoldingTranslate")
+        alwaysFoldingTranslate = JCheckBox()
+        alwaysFoldingTranslate.text = bundle.message("settings.view.alwaysFoldingTranslate")
+        showCodeAssistant = JCheckBox()
+        showCodeAssistant.text = bundle.message("settings.view.showCodeAssistant")
+
+
+        showFoldingTranslate.addChangeListener { e ->
+            alwaysFoldingTranslate.isEnabled = showFoldingTranslate.isSelected
+        }
+
+        form.addComponent(showDuplicates)
+        form.addComponent(showMissingTranslates)
+        form.addComponent(showTableView)
+        form.addComponent(showTreeView)
+        form.addComponent(showCurrentFile)
+        form.addComponent(showFoldingTranslate)
+        form.addComponent(alwaysFoldingTranslate)
+        form.addComponent(showCodeAssistant)
+
+        return form.panel
+    }
+
+    private fun getDeeplGroup(): JComponent {
+        val form = FormBuilder.createFormBuilder()
+
+        deeplEnabled = JCheckBox()
+        deeplEnabled.text = bundle.message("settings.deepl.deeplEnabled")
+        deeplApiKey = JBTextField()
+
+        deeplEnabled.addChangeListener { _ ->
+            deeplApiKey.isEnabled = deeplEnabled.isSelected
+        }
+
+        form.addComponent(deeplEnabled)
+        form.addLabeledComponent(bundle.message("settings.deepl.deeplApiKey"), deeplApiKey)
+
+        return form.panel
     }
 
     fun getFileList(): JPanel {
         fileList = JBList(DefaultListModel())
         fileList.cellRenderer = FileListCellRenderer()
 
-        addButton = JButton(bundle.message("settings.hint.add"))
-        removeButton = JButton(bundle.message("settings.hint.delete"))
+        addButton = JButton(bundle.message("settings.translate.add"))
+        removeButton = JButton(bundle.message("settings.translate.delete"))
 
         // отслеживание измененией выбранного элемента в списке
         fileList.addListSelectionListener { event: ListSelectionEvent ->
@@ -50,7 +110,7 @@ class ProjectSettingsComponent(private val project: Project) : ProjectSettingsCo
         addButton.addActionListener {
             val fileChooserDescriptor = FileChooserDescriptor(true, false, false, false, false, false)
                 .withFileFilter { file -> file.extension == "json" }
-                .withTitle(bundle.message("settings.hint.choseJsonFile"))
+                .withTitle(bundle.message("settings.translate.choseJsonFile"))
 
             val virtualFile: VirtualFile? = FileChooser.chooseFile(fileChooserDescriptor, project, null)
 
@@ -112,7 +172,7 @@ class ProjectSettingsComponent(private val project: Project) : ProjectSettingsCo
     private fun getDefaultLang(): JComponent {
         defaultLang = ComboBox<String>()
         defaultLang.model = DefaultComboBoxModel()
-        defaultLang.setToolTipText(bundle.message("settings.defaultLang.tooltip"))
+        defaultLang.setToolTipText(bundle.message("settings.translate.defaultLang.tooltip"))
         defaultLang.setMinimumAndPreferredWidth(200)
 
         return defaultLang
