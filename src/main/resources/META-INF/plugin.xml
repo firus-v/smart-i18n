@@ -14,6 +14,14 @@
         <!-- Панель настроек редактора -->
         <projectConfigurable id="com.github.firusv.smarti18n.AppSettingsConfigurable" instance="com.github.firusv.smarti18n.settings.ProjectSettingsConfigurable"
                              parentId="tools" displayName="Smart I18n"/>
+        <!-- Рабочая панель -->
+        <toolWindow id="Smart I18n" anchor="bottom"
+                    factoryClass="com.github.firusv.smarti18n.service.TranslatorToolWindowFactory"
+                    icon="/smart-icon.svg"/>
+        <notificationGroup displayType="BALLOON" id="Easy I18n Notification Group"/>
+
+        <errorHandler implementation="com.github.firusv.smarti18n.service.ErrorReportHandler"/>
+
     </extensions>
 
     <applicationListeners>
