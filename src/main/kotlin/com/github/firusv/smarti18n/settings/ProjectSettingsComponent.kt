@@ -39,6 +39,7 @@ class ProjectSettingsComponent(private val project: Project) : ProjectSettingsCo
             .panel
 
         addChangeListeners()
+        updateDefaultLang()
     }
 
     private fun addChangeListeners(){
@@ -55,15 +56,12 @@ class ProjectSettingsComponent(private val project: Project) : ProjectSettingsCo
     private fun getViewOptionsGroup(): JComponent {
         val form = FormBuilder.createFormBuilder()
 
-        showDuplicates = JCheckBox()
-        showDuplicates.text = bundle.message("settings.view.showDuplicates")
-        showMissingTranslates = JCheckBox()
-        showMissingTranslates.text = bundle.message("settings.view.showMissingTranslates")
         showTableView = JCheckBox()
         showTableView.text = bundle.message("settings.view.showTableView")
         showTreeView = JCheckBox()
         showTreeView.text = bundle.message("settings.view.showTreeView")
         showCurrentFile = JCheckBox()
+        showCurrentFile.isEnabled = false
         showCurrentFile.text = bundle.message("settings.view.showCurrentFile")
         showFoldingTranslate = JCheckBox()
         showFoldingTranslate.text = bundle.message("settings.view.showFoldingTranslate")
@@ -74,10 +72,8 @@ class ProjectSettingsComponent(private val project: Project) : ProjectSettingsCo
 
 
 
-        form.addComponent(showDuplicates)
-        form.addComponent(showMissingTranslates)
-        form.addComponent(showTableView)
-        form.addComponent(showTreeView)
+//        form.addComponent(showTableView)
+//        form.addComponent(showTreeView)
         form.addComponent(showCurrentFile)
         form.addComponent(showFoldingTranslate)
         form.addComponent(alwaysFoldingTranslate)
@@ -93,9 +89,13 @@ class ProjectSettingsComponent(private val project: Project) : ProjectSettingsCo
         deeplEnabled.text = bundle.message("settings.deepl.deeplEnabled")
         deeplApiKey = JBTextField()
 
+        deeplEnabled.isEnabled = false
+        deeplApiKey.isEnabled = false
+
         form.addComponent(deeplEnabled)
         form.addLabeledComponent(bundle.message("settings.deepl.deeplApiKey"), deeplApiKey)
 
+        form.panel.isEnabled = false
         return form.panel
     }
 

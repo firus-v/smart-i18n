@@ -18,12 +18,6 @@ open class ProjectSettingsComponentState {
     // Разделитель
     lateinit var delimiter: JBTextField
 
-    // Подсвечивать дубликаты
-    lateinit var showDuplicates: JCheckBox
-
-    // Подсвечивать пропущенные переводы
-    lateinit var showMissingTranslates: JCheckBox
-
     // Показывать вкладку "Table View"
     lateinit var showTableView: JCheckBox
 
@@ -57,8 +51,6 @@ open class ProjectSettingsComponentState {
         defaultLang.model = state.getDefaultLang()
         delimiter.text = state.getDelimiter()
 
-        showDuplicates.isSelected = state.getShowDuplicates()
-        showMissingTranslates.isSelected = state.getShowMissingTranslates()
         showTableView.isSelected = state.getShowTableView()
         showTreeView.isSelected = state.getShowTreeView()
         showCurrentFile.isSelected = state.getShowCurrentFile()
@@ -79,8 +71,6 @@ open class ProjectSettingsComponentState {
         state.setDefaultLang(defaultLang.model)
         state.setDelimiter(delimiter.text)
 
-        state.setShowDuplicates(showDuplicates.isSelected)
-        state.setShowMissingTranslates(showMissingTranslates.isSelected)
         state.setShowTableView(showTableView.isSelected)
         state.setShowTreeView(showTreeView.isSelected)
         state.setShowCurrentFile(showCurrentFile.isSelected)
@@ -105,5 +95,6 @@ open class ProjectSettingsComponentState {
                 }
             }
         }
+        defaultLang.isEnabled = defaultLang.model.size > 0
     }
 }

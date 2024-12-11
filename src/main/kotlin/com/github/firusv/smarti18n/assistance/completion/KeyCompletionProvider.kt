@@ -52,6 +52,6 @@ internal class KeyCompletionProvider : CompletionProvider<CompletionParameters>(
     }
 
     companion object {
-        private val icon = getIcon("/icons/translate13.svg", KeyCompletionProvider::class.java)
+        private val icon = getIcon("/smart-icon.svg", KeyCompletionProvider::class.java)
     }
 }

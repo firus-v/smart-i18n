@@ -14,16 +14,14 @@ open class ProjectSettingsState {
     private var defaultLang: String = ""
     private var delimiter: String = "."
 
-    private var showDuplicates: Boolean = true
-    private var showMissingTranslates: Boolean = true
     private var showTableView: Boolean = true
     private var showTreeView: Boolean = true
-    private var showCurrentFile: Boolean = true
+    private var showCurrentFile: Boolean = false
     private var showFoldingTranslate: Boolean = true
-    private var alwaysFoldingTranslate: Boolean = true
+    private var alwaysFoldingTranslate: Boolean = false
     private var showCodeAssistant: Boolean = true
 
-    private var deeplEnabled: Boolean = true
+    private var deeplEnabled: Boolean = false
     private var deeplApiKey: String = ""
 
 
@@ -82,14 +80,6 @@ open class ProjectSettingsState {
         return delimiter
     }
 
-    fun getShowDuplicates(): Boolean {
-        return showDuplicates
-    }
-
-    fun getShowMissingTranslates(): Boolean {
-        return showMissingTranslates
-    }
-
     fun getShowTableView(): Boolean {
         return showTableView
     }
@@ -112,14 +102,6 @@ open class ProjectSettingsState {
 
     fun getShowCodeAssistant(): Boolean {
         return showCodeAssistant
-    }
-
-    fun setShowDuplicates(v: Boolean) {
-        showDuplicates = v
-    }
-
-    fun setShowMissingTranslates(v: Boolean) {
-        showMissingTranslates = v
     }
 
     fun setShowTableView(v: Boolean) {

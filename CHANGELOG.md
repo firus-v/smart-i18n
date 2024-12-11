@@ -5,6 +5,16 @@
 ## [Unreleased]
 ### Added
 
+## [1.0.0] - 11.12.2024
+### Added
+- Added js support
+- Added autocomplete
+- Added actions
+
+### Fixes
+- Fixed error handlers
+- Fixed settings form validation
+
 ## [0.1.0] - 11.12.2024
 ### Added
 - Added read/write files of translates
