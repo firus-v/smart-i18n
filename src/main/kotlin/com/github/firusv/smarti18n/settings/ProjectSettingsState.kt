@@ -60,6 +60,10 @@ open class ProjectSettingsState {
         return model
     }
 
+    fun getDefaultLangToString(): String{
+        return defaultLang
+    }
+
     fun getFileList(): ListModel<VirtualFile> {
         val model = DefaultListModel<VirtualFile>()
         val list = fileList.split(":fileSeparator:").toTypedArray()

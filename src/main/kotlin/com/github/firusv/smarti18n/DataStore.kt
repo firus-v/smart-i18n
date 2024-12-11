@@ -70,13 +70,7 @@ class DataStore(private val project: Project) {
                 successResult(true)
             } catch (ex: Exception) {
                 successResult(false)
-
-                // TODO обработать испключения
-//                if (ex is EmptyLocalesDirException) {
-//                    NotificationHelper.createEmptyLocalesDirNotification(project)
-//                } else {
-//                    NotificationHelper.createIOError(settings, ex)
-//                }
+                NotificationHelper.createIOError(settings, ex)
             }
         }
     }

@@ -35,24 +35,7 @@ object NotificationHelper {
             NotificationType.ERROR
         )
 
-//        notification.addAction(OpenFileAction(ex.file.virtualFile, false))
-//        notification.addAction(SettingsAction(false))
-
         Notifications.Bus.notify(notification, project)
     }
 
-//    fun createEmptyLocalesDirNotification(project: Project) {
-//        val bundle = ResourceBundle.getBundle("messages")
-//
-//        val notification = Notification(
-//            NOTIFICATION_GROUP,
-//            "Smart I18n",
-//            bundle.getString("warning.missing-config"),
-//            NotificationType.WARNING
-//        )
-//
-//        notification.addAction(SettingsAction())
-//
-//        Notifications.Bus.notify(notification, project)
-//    }
 }

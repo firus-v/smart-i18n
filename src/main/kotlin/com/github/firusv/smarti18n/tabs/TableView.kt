@@ -3,11 +3,14 @@ package com.github.firusv.smarti18n.tabs
 
 import com.github.firusv.smarti18n.InstanceManager
 import com.github.firusv.smarti18n.MessagesBundle
+import com.github.firusv.smarti18n.dialog.EditDialog
 import com.github.firusv.smarti18n.listeners.DeleteKeyListener
 import com.github.firusv.smarti18n.listeners.PopupClickListener
 import com.github.firusv.smarti18n.listeners.ReturnKeyListener
 import com.github.firusv.smarti18n.model.KeyPath
+import com.github.firusv.smarti18n.model.Translation
 import com.github.firusv.smarti18n.model.TranslationData
+import com.github.firusv.smarti18n.model.action.TranslationDelete
 import com.github.firusv.smarti18n.model.bus.FilteredBusListener
 import com.github.firusv.smarti18n.tabs.mapper.TableModelMapper
 import com.github.firusv.smarti18n.tabs.renderer.TableRenderer
@@ -47,8 +50,7 @@ class TableView(private val project: Project) : FilteredBusListener {
         val value = InstanceManager.get(project).store().getData().getTranslation(fullPath)
 
         value?.let {
-            // TODO доделать диалоговое окно редактирования
-//            EditDialog(project, Translation(fullPath, it)).showAndHandle()
+            EditDialog(project, Translation(fullPath, it)).showAndHandle()
         }
     }
 
@@ -60,8 +62,7 @@ class TableView(private val project: Project) : FilteredBusListener {
         }
 
         batchDelete.forEach { key ->
-            // TODO доделать удаление переводов
-//            InstanceManager.get(project).processUpdate(TranslationDelete(Translation(key, null)))
+            InstanceManager.get(project).processUpdate(TranslationDelete(Translation(key, null)))
         }
     }
 

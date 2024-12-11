@@ -39,7 +39,6 @@ class KeyPathConverter {
 
         for (i in 0 until path.size) {
             if (i > 0 && i < path.size) { // Разделители
-                // TODO подумать об экранировании разделителей
                 builder.append(settings.getDelimiter())
             }
 

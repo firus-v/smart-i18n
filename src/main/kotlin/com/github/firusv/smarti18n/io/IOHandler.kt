@@ -58,7 +58,7 @@ class IOHandler(
         }
 
         // TODO сортировка переводов по алфавиту settings.isSorting
-        val data = TranslationData(true)
+        val data = TranslationData(false)
         val translationFiles = folderStrategy.analyzeFileList(fileList)
 
         for (file in translationFiles) {

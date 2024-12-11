@@ -4,12 +4,14 @@ import com.github.firusv.smarti18n.InstanceManager
 import com.github.firusv.smarti18n.MessagesBundle
 import com.github.firusv.smarti18n.action.treeview.CollapseTreeViewAction
 import com.github.firusv.smarti18n.action.treeview.ExpandTreeViewAction
+import com.github.firusv.smarti18n.dialog.EditDialog
 import com.github.firusv.smarti18n.listeners.DeleteKeyListener
 import com.github.firusv.smarti18n.listeners.PopupClickListener
 import com.github.firusv.smarti18n.listeners.ReturnKeyListener
 import com.github.firusv.smarti18n.model.KeyPath
 import com.github.firusv.smarti18n.model.Translation
 import com.github.firusv.smarti18n.model.TranslationData
+import com.github.firusv.smarti18n.model.TranslationValue
 import com.github.firusv.smarti18n.model.action.TranslationDelete
 import com.github.firusv.smarti18n.model.bus.FilteredBusListener
 import com.github.firusv.smarti18n.settings.ProjectSettingsService
@@ -100,10 +102,9 @@ class TreeView(private val project: Project) : FilteredBusListener {
         if (node.userObject !is PresentationData) return
 
         val fullPath = TreeUtil.getFullPath(path)
-        InstanceManager.get(project).store().getData().getTranslation(fullPath) ?: return
+        val value: TranslationValue = InstanceManager.get(project).store().getData().getTranslation(fullPath) ?: return
 
-        // TODO добавить редактирование перевода для TreeView
-//        EditDialog(project, Translation(fullPath, value)).showAndHandle()
+        EditDialog(project, Translation(fullPath, value)).showAndHandle()
     }
 
     private fun deleteSelectedNodes() {

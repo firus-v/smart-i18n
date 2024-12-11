@@ -24,7 +24,7 @@ object TreeUtil {
             val value = node.userObject
             val section = if (value is PresentationData) value.presentableText else value.toString()
 
-            if (value == null) { // Skip empty sections
+            if (value == null || value == "userObject") { // Skip empty sections
                 continue
             }
 

@@ -37,6 +37,19 @@ class ProjectSettingsComponent(private val project: Project) : ProjectSettingsCo
             .addComponent(getDeeplGroup())
             .addComponentFillVertically(JPanel(), 0)
             .panel
+
+        addChangeListeners()
+    }
+
+    private fun addChangeListeners(){
+        showFoldingTranslate.addChangeListener { e ->
+            alwaysFoldingTranslate.isEnabled = showFoldingTranslate.isSelected
+        }
+        deeplEnabled.addChangeListener { _ ->
+            deeplApiKey.isEnabled = deeplEnabled.isSelected
+        }
+        alwaysFoldingTranslate.isEnabled = showFoldingTranslate.isSelected
+        deeplApiKey.isEnabled = deeplEnabled.isSelected
     }
 
     private fun getViewOptionsGroup(): JComponent {
@@ -60,9 +73,6 @@ class ProjectSettingsComponent(private val project: Project) : ProjectSettingsCo
         showCodeAssistant.text = bundle.message("settings.view.showCodeAssistant")
 
 
-        showFoldingTranslate.addChangeListener { e ->
-            alwaysFoldingTranslate.isEnabled = showFoldingTranslate.isSelected
-        }
 
         form.addComponent(showDuplicates)
         form.addComponent(showMissingTranslates)
@@ -82,10 +92,6 @@ class ProjectSettingsComponent(private val project: Project) : ProjectSettingsCo
         deeplEnabled = JCheckBox()
         deeplEnabled.text = bundle.message("settings.deepl.deeplEnabled")
         deeplApiKey = JBTextField()
-
-        deeplEnabled.addChangeListener { _ ->
-            deeplApiKey.isEnabled = deeplEnabled.isSelected
-        }
 
         form.addComponent(deeplEnabled)
         form.addLabeledComponent(bundle.message("settings.deepl.deeplApiKey"), deeplApiKey)
