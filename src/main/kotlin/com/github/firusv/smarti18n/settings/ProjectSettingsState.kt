@@ -36,7 +36,10 @@ open class ProjectSettingsState {
     }
 
     fun setDefaultLang(model: ComboBoxModel<String>) {
-        val index = model.selectedItem.toString()
+        var index = ""
+        if(model.selectedItem != null) {
+            index = model.selectedItem.toString()
+        }
         defaultLang = index
     }
 

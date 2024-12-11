@@ -65,8 +65,7 @@ abstract class AbstractFoldingBuilder : FoldingBuilderEx(), OptionalAssistance {
                 psiElement.textRange.endOffset - 1
             )
 
-            // TODO Как вариант в будущем перенести в настройки
-            val isAlwaysFold = true
+            val isAlwaysFold = settings.getAlwaysFoldingTranslate()
 
             // Некоторые реализации языков, такие как [Vue Template], не поддерживают FoldingGroup
             val descriptor = FoldingDescriptor(
