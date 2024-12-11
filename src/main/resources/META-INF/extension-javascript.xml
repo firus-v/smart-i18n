@@ -1,0 +1,24 @@
+<idea-plugin>
+    <extensions defaultExtensionNs="com.intellij">
+
+        <lang.foldingBuilder
+                language="JavaScript"
+                implementationClass="com.github.firusv.smarti18n.assistance.folding.JsFoldingBuilder"
+        />
+
+        <lang.foldingBuilder
+                language="TypeScript"
+                implementationClass="com.github.firusv.smarti18n.assistance.folding.JsFoldingBuilder"
+        />
+
+        <lang.foldingBuilder
+                language="TypeScript JSX"
+                implementationClass="com.github.firusv.smarti18n.assistance.folding.JsFoldingBuilder"
+        />
+
+        <completion.contributor
+                language="JavaScript"
+                implementationClass="com.github.firusv.smarti18n.assistance.completion.JsCompletionContributor"
+        />
+    </extensions>
+</idea-plugin>

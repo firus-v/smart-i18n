@@ -8,6 +8,8 @@
     <depends>com.intellij.modules.lang</depends>
     <depends>JavaScript</depends>
 
+    <depends optional="true" config-file="extension-javascript.xml">JavaScript</depends>
+
     <resource-bundle>messages.messages</resource-bundle>
 
     <extensions defaultExtensionNs="com.intellij">
