@@ -30,7 +30,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Maximize disk space
-        uses: pexcn/maximize-disk-space@v1.0.4
+        uses: firus-v/free-disk-space@main
 
   # Prepare environment and build the plugin
   build:
