@@ -1,5 +1,6 @@
 package com.github.firusv.smarti18n
 
+import com.github.firusv.smarti18n.exception.EmptyLocalesDirException
 import com.github.firusv.smarti18n.io.IOHandler
 import com.github.firusv.smarti18n.model.TranslationData
 import com.github.firusv.smarti18n.service.FileChangeListener
@@ -45,15 +46,14 @@ class DataStore(private val project: Project) {
                 changeListener.updateLocalesPath(settings.getFileList())
                 successResult(true)
             } catch (ex: Exception) {
-                // TODO isSorting параметор з настроек. пока false
+                // TODO Разобраться с сортировкой, возможно стоит сделать через параметр в настройках
                 data = TranslationData(false)
                 successResult(false)
 
 
-                    // TODO обработать испключения
-//                if (ex !is EmptyLocalesDirException) {
-//                    NotificationHelper.createIOError(settings, ex)
-//                }
+                if (ex !is EmptyLocalesDirException) {
+                    NotificationHelper.createIOError(settings, ex)
+                }
             }
         }
     }

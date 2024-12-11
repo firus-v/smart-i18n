@@ -2,6 +2,7 @@ package com.github.firusv.smarti18n.util
 
 import com.github.firusv.smarti18n.MessagesBundle
 import com.github.firusv.smarti18n.exception.SyntaxException
+import com.github.firusv.smarti18n.io.IOHandler
 import com.github.firusv.smarti18n.settings.ProjectSettingsState
 import com.intellij.notification.Notification
 import com.intellij.notification.NotificationType
@@ -17,20 +18,13 @@ import java.util.*
  */
 object NotificationHelper {
 
-    private const val NOTIFICATION_GROUP = "Easy I18n Notification Group"
+    private const val NOTIFICATION_GROUP = "Smart I18n Notification Group"
 
-        // TODO Доработать сервис уведомлений
-
-//    fun createIOError(state: ProjectSettingsState, ex: Exception) {
-//        val bundle = ResourceBundle.getBundle("messages")
-//
-//        val message = MessageFormat.format(
-//            bundle.getString("error.io"),
-//            state.folderStrategy, state.parserStrategy, state.filePattern, state.localesDirectory
-//        )
-//
-//        Logger.getInstance(IOHandler::class.java).error(message, ex)
-//    }
+    fun createIOError(state: ProjectSettingsState, ex: Exception) {
+        val bundle = MessagesBundle
+        val message = bundle.message("error.io", state.getDefaultLang(), state.getDelimiter())
+        Logger.getInstance(IOHandler::class.java).error(message, ex)
+    }
 
     fun createBadSyntaxNotification(project: Project, ex: SyntaxException) {
 
@@ -52,7 +46,7 @@ object NotificationHelper {
 //
 //        val notification = Notification(
 //            NOTIFICATION_GROUP,
-//            "Easy I18n",
+//            "Smart I18n",
 //            bundle.getString("warning.missing-config"),
 //            NotificationType.WARNING
 //        )
