@@ -12,6 +12,15 @@
 
     <resource-bundle>messages.messages</resource-bundle>
 
+    <actions>
+        <action
+                id="com.github.firusv.smarti18n.action.AddAction"
+                class="com.github.firusv.smarti18n.action.AddAction" icon="AllIcons.Actions.PreserveCaseHover"
+        >
+            <add-to-group group-id="NewGroup"/>
+        </action>
+    </actions>
+
     <extensions defaultExtensionNs="com.intellij">
         <!-- Панель настроек редактора -->
         <projectConfigurable id="com.github.firusv.smarti18n.AppSettingsConfigurable" instance="com.github.firusv.smarti18n.settings.ProjectSettingsConfigurable"

@@ -36,6 +36,7 @@ class AddDialog(
 
     init {
         title = MessagesBundle.message("action.add")
+        translateKeyField.text = ""
     }
 
     /**
