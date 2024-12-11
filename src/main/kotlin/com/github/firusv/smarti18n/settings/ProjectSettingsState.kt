@@ -37,7 +37,9 @@ open class ProjectSettingsState {
         for(index in 0 until fileListModel.size){
             model.addElement(fileListModel.getElementAt(index).nameWithoutExtension)
         }
-        model.selectedItem = defaultLang
+        if(defaultLang != ""){
+            model.selectedItem = defaultLang
+        }
 
         return model
     }

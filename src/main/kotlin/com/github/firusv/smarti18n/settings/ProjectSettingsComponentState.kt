@@ -8,12 +8,12 @@ import javax.swing.JButton
 
 // Отвечает за хранение состояния компоненты.
 open class ProjectSettingsComponentState {
-    protected lateinit var fileList: JBList<VirtualFile>
-    protected lateinit var defaultLang: ComboBox<String>
-    protected lateinit var delimiter: JBTextField
+    lateinit var fileList: JBList<VirtualFile>
+    lateinit var defaultLang: ComboBox<String>
+    lateinit var delimiter: JBTextField
 
-    protected lateinit var addButton: JButton
-    protected lateinit var removeButton: JButton
+    lateinit var addButton: JButton
+    lateinit var removeButton: JButton
 
     // state -> поля
     fun setState(state: ProjectSettingsState) {
@@ -36,5 +36,13 @@ open class ProjectSettingsComponentState {
     fun updateDefaultLang(){
         val state = ProjectSettingsState()
         defaultLang.model = state.getDefaultLang(fileList.model)
+        if(defaultLang.model.size > 1){
+            for (index in 0  until defaultLang.model.size){
+                if(defaultLang.model.getElementAt(index) == ""){
+                    defaultLang.remove(index)
+                    break
+                }
+            }
+        }
     }
 }

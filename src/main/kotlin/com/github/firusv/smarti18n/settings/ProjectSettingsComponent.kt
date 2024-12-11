@@ -33,19 +33,17 @@ class ProjectSettingsComponent(private val project: Project) : ProjectSettingsCo
             .panel
     }
 
-    private fun getFileList(): JPanel {
-        fileList = JBList<VirtualFile>()
+    fun getFileList(): JPanel {
+        fileList = JBList(DefaultListModel())
         fileList.cellRenderer = FileListCellRenderer()
 
         addButton = JButton(bundle.message("settings.hint.add"))
         removeButton = JButton(bundle.message("settings.hint.delete"))
 
-        // отслеживание измененией списка
+        // отслеживание измененией выбранного элемента в списке
         fileList.addListSelectionListener { event: ListSelectionEvent ->
             // управление активностью кнопки удалить
-            if (event.valueIsAdjusting) {
-                checkRemoveButton()
-            }
+            checkRemoveButton()
         }
 
         // Нажатие на кнопку добавления файла
@@ -56,25 +54,12 @@ class ProjectSettingsComponent(private val project: Project) : ProjectSettingsCo
 
             val virtualFile: VirtualFile? = FileChooser.chooseFile(fileChooserDescriptor, project, null)
 
-            virtualFile?.let { file ->
-                val model = fileList.model as DefaultListModel<VirtualFile>
-
-                // Проверка на уникальность
-                if (!model.contains(file)) {
-                    model.addElement(file)
-                }
-            }
-            updateDefaultLang()
+            addFileToListModel(virtualFile)
         }
 
         // Нажатие на кнопку удаления файла
         removeButton.addActionListener {
-            val selected = fileList.selectedValue
-            if (selected != null) {
-                (fileList.model as DefaultListModel<VirtualFile>).removeElement(selected)
-            }
-            checkRemoveButton()
-            updateDefaultLang()
+            removeSelectedFileFromFileListModel()
         }
 
         // Выставления статуса активности для кнопки удаления файла
@@ -97,7 +82,34 @@ class ProjectSettingsComponent(private val project: Project) : ProjectSettingsCo
         }
     }
 
-    private fun getDefaultLang(): JComponent{
+    fun removeSelectedFileFromFileListModel() {
+        val selected = fileList.selectedValue
+        if (selected != null) {
+            (fileList.model as DefaultListModel<VirtualFile>).removeElement(selected)
+        }
+        updateDefaultLang()
+        checkRemoveButton()
+    }
+
+    fun addFileToListModel(virtualFile: VirtualFile?) {
+        virtualFile?.let { file ->
+            val model = fileList.model as DefaultListModel<VirtualFile>
+
+            // Проверка на уникальность
+            if (!model.contains(file)) {
+                model.addElement(file)
+            }
+        }
+        updateDefaultLang()
+        checkRemoveButton()
+    }
+
+    private fun checkRemoveButton() {
+        val editable = !fileList.isEmpty && fileList.selectedIndex != -1
+        removeButton.isEnabled = editable
+    }
+
+    private fun getDefaultLang(): JComponent {
         defaultLang = ComboBox<String>()
         defaultLang.model = DefaultComboBoxModel()
         defaultLang.setToolTipText(bundle.message("settings.defaultLang.tooltip"))
@@ -106,17 +118,12 @@ class ProjectSettingsComponent(private val project: Project) : ProjectSettingsCo
         return defaultLang
     }
 
-    private fun getDelimiter(): JComponent{
+    private fun getDelimiter(): JComponent {
         delimiter = JBTextField()
         delimiter.preferredSize = Dimension(72, delimiter.preferredSize.height)
         val panel = JPanel(BorderLayout())
         panel.add(delimiter, BorderLayout.WEST)
         return panel
-    }
-
-    private fun checkRemoveButton(){
-        val editable = !fileList.isEmpty && fileList.selectedIndex != -1
-        removeButton.isEnabled = editable
     }
 
     fun getMainPanel(): JPanel {
