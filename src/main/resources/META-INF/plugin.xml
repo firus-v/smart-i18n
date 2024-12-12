@@ -6,7 +6,6 @@
 
     <depends>com.intellij.modules.platform</depends>
     <depends>com.intellij.modules.lang</depends>
-    <depends>JavaScript</depends>
 
     <depends optional="true" config-file="extension-javascript.xml">JavaScript</depends>
 
