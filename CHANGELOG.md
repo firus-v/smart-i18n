@@ -5,6 +5,10 @@
 ## [Unreleased]
 ### Added
 
+## [1.0.5] - 12.12.2024
+### Fixed
+- Fixed release ci/cd
+
 ## [1.0.4] - 12.12.2024
 ### Fixed
 - Fixed duplicate deps

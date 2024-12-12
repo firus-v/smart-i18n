@@ -8,13 +8,6 @@ on:
     types: [prereleased, released]
 
 jobs:
-
-  # Clear disk space before actions
-  free-disk-space:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Maximize disk space
-        uses: firus-v/free-disk-space@main
   # Prepare and publish the plugin to JetBrains Marketplace repository
   release:
     name: Publish Plugin
