@@ -43,7 +43,7 @@ class DataStore(private val project: Project) {
         ApplicationManager.getApplication().runReadAction {
             try {
                 data = IOHandler(project, settings).read()
-                changeListener.updateLocalesPath(settings.getFileList())
+                changeListener.updateLocalesPath(settings.getFileListModel())
                 successResult(true)
             } catch (ex: Exception) {
                 // TODO Разобраться с сортировкой, возможно стоит сделать через параметр в настройках

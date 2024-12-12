@@ -58,7 +58,7 @@ class TreeModelMapper(
 
                 parent.add(childNode)
             } else {
-                val previewLocale = state.getDefaultLang()
+                val previewLocale = state.getDefaultLangModel()
                 val sub = "(${previewLocale.selectedItem}: ${childTranslationNode.value.get(previewLocale.selectedItem.toString())})"
                 val tooltip = UiUtil.generateHtmlTooltip(childTranslationNode.value.entries)
 

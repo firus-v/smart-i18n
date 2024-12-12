@@ -1,0 +1,23 @@
+<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g filter="url(#filter0_i_22_2)">
+        <rect width="40" height="40" rx="5" fill="url(#paint0_radial_22_2)"/>
+        <path d="M16.25 35V7.5M16.25 35H12.2321M16.25 35H20.2678M16.25 7.5H5V12.3714M16.25 7.5H27.5V12.3714" stroke="#6C707E" stroke-width="3.25" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="26.25" y="33.25" width="8.75" height="3.25" rx="1.625" fill="#6C707E"/>
+    </g>
+    <defs>
+        <filter id="filter0_i_22_2" x="0" y="0" width="40" height="40" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+            <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+            <feOffset/>
+            <feGaussianBlur stdDeviation="0.5"/>
+            <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+            <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.5 0"/>
+            <feBlend mode="normal" in2="shape" result="effect1_innerShadow_22_2"/>
+        </filter>
+        <radialGradient id="paint0_radial_22_2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(31 34) rotate(-131.186) scale(31.8904)">
+            <stop stop-color="#C5C5C5"/>
+            <stop offset="1" stop-color="#E6E6E6"/>
+        </radialGradient>
+    </defs>
+</svg>

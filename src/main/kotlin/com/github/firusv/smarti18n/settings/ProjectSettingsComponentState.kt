@@ -47,8 +47,8 @@ open class ProjectSettingsComponentState {
 
     // state -> поля
     fun setState(state: ProjectSettingsState) {
-        fileList.model = state.getFileList()
-        defaultLang.model = state.getDefaultLang()
+        fileList.model = state.getFileListModel()
+        defaultLang.model = state.getDefaultLangModel()
         delimiter.text = state.getDelimiter()
 
         showTableView.isSelected = state.getShowTableView()
@@ -61,14 +61,16 @@ open class ProjectSettingsComponentState {
         deeplEnabled.isSelected = state.getDeeplEnabled()
         deeplApiKey.text = state.getDeeplApiKey()
 
+        updateDefaultLang()
+
     }
 
     // поля -> state
     fun getState(): ProjectSettingsState {
         val state = ProjectSettingsState()
 
-        state.setFileList(fileList.model)
-        state.setDefaultLang(defaultLang.model)
+        state.setFileListModel(fileList.model)
+        state.setDefaultLangModel(defaultLang.model)
         state.setDelimiter(delimiter.text)
 
         state.setShowTableView(showTableView.isSelected)
@@ -86,7 +88,7 @@ open class ProjectSettingsComponentState {
 
     fun updateDefaultLang() {
         val state = ProjectSettingsState()
-        defaultLang.model = state.getDefaultLang(fileList.model)
+        defaultLang.model = state.getDefaultLangModel(fileList.model)
         if (defaultLang.model.size > 1) {
             for (index in 0 until defaultLang.model.size) {
                 if (defaultLang.model.getElementAt(index) == "") {

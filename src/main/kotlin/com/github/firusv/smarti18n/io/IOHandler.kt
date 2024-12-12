@@ -51,7 +51,7 @@ class IOHandler(
      */
     @Throws(IOException::class)
     fun read(): TranslationData {
-        val fileList = settings.getFileList();
+        val fileList = settings.getFileListModel();
 
         if (fileList.size == 0) {
             throw EmptyLocalesDirException("File list must not be empty")
@@ -82,7 +82,7 @@ class IOHandler(
      */
     @Throws(IOException::class)
     fun write(data: TranslationData) {
-        val fileListModel = settings.getFileList()
+        val fileListModel = settings.getFileListModel()
 
         if (fileListModel.size == 0) {
             throw EmptyLocalesDirException("File list must not be empty")

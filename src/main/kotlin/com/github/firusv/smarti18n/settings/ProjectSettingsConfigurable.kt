@@ -1,6 +1,10 @@
 package com.github.firusv.smarti18n.settings
 
 import com.github.firusv.smarti18n.InstanceManager
+import com.intellij.openapi.application.ApplicationManager
+import com.intellij.openapi.editor.EditorFactory
+import com.intellij.openapi.editor.FoldingModel
+import com.intellij.openapi.fileEditor.FileEditorManager
 import com.intellij.openapi.options.Configurable
 import com.intellij.openapi.project.Project
 import javax.swing.JComponent
@@ -31,6 +35,30 @@ class ProjectSettingsConfigurable(private val project: Project) : Configurable {
         val service = ProjectSettingsService.get(project)
         service.state = component.getState()
         InstanceManager.get(project).reload()
+
+        reloadFoldingModelForAllFiles(service.state)
+    }
+
+
+
+    fun reloadFoldingModelForAllFiles(state: ProjectSettingsState) {
+        ApplicationManager.getApplication().invokeLater {
+            val fileEditorManager = FileEditorManager.getInstance(project)
+            val openFiles = fileEditorManager.openFiles
+
+            val editorFactory = EditorFactory.getInstance()
+            val editors = editorFactory.allEditors
+
+            for (editor in editors) {
+                val foldingModel: FoldingModel = editor.foldingModel
+                foldingModel.runBatchFoldingOperation {
+                    foldingModel.allFoldRegions.forEach { region ->
+                        val showFolding = state.getShowFoldingTranslate() && state.getAlwaysFoldingTranslate()
+                        region.isExpanded = !showFolding
+                    }
+                }
+            }
+        }
     }
 
     override fun reset() {

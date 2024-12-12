@@ -5,13 +5,20 @@
 ## [Unreleased]
 ### Added
 
+## [1.0.1] - 12.12.2024
+### Added
+- Added reload folding rules on "apply"
+
+### Fixed
+- save translate list between reload IDE
+
 ## [1.0.0] - 11.12.2024
 ### Added
 - Added js support
 - Added autocomplete
 - Added actions
 
-### Fixes
+### Fixed
 - Fixed error handlers
 - Fixed settings form validation
 

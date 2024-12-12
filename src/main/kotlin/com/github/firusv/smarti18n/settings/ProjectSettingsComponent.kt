@@ -3,6 +3,7 @@ package com.github.firusv.smarti18n.settings
 import com.github.firusv.smarti18n.MessagesBundle
 import com.intellij.openapi.fileChooser.FileChooser
 import com.intellij.openapi.fileChooser.FileChooserDescriptor
+import com.intellij.openapi.observable.util.addListDataListener
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.ui.ComboBox
 import com.intellij.openapi.vfs.VirtualFile
@@ -28,8 +29,8 @@ class ProjectSettingsComponent(private val project: Project) : ProjectSettingsCo
     init {
         mainPanel = FormBuilder.createFormBuilder()
             .addComponent(TitledSeparator(bundle.message("settings.translate.title")))
-            .addComponent(getFileList())
-            .addLabeledComponent(bundle.message("settings.translate.defaultLang.title"), getDefaultLang())
+            .addComponent(getFileListModel())
+            .addLabeledComponent(bundle.message("settings.translate.defaultLang.title"), getDefaultLangModel())
             .addLabeledComponent(bundle.message("settings.translate.delimiter"), getDelimiter())
             .addComponent(TitledSeparator(bundle.message("settings.view.title")))
             .addComponent(getViewOptionsGroup())
@@ -99,7 +100,7 @@ class ProjectSettingsComponent(private val project: Project) : ProjectSettingsCo
         return form.panel
     }
 
-    fun getFileList(): JPanel {
+    fun getFileListModel(): JPanel {
         fileList = JBList(DefaultListModel())
         fileList.cellRenderer = FileListCellRenderer()
 
@@ -175,7 +176,7 @@ class ProjectSettingsComponent(private val project: Project) : ProjectSettingsCo
         removeButton.isEnabled = editable
     }
 
-    private fun getDefaultLang(): JComponent {
+    private fun getDefaultLangModel(): JComponent {
         defaultLang = ComboBox<String>()
         defaultLang.model = DefaultComboBoxModel()
         defaultLang.setToolTipText(bundle.message("settings.translate.defaultLang.tooltip"))

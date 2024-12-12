@@ -27,7 +27,7 @@ class AddDialog(
         prefillKey ?: KeyPath(),
         prefillLocale?.let {
             TranslationValue(
-                ProjectSettingsService.get(project).state.getDefaultLangToString(),
+                ProjectSettingsService.get(project).state.getDefaultLangModelToString(),
                 prefillLocale
             )
         }

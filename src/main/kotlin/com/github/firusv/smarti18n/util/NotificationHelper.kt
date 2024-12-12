@@ -22,7 +22,7 @@ object NotificationHelper {
 
     fun createIOError(state: ProjectSettingsState, ex: Exception) {
         val bundle = MessagesBundle
-        val message = bundle.message("error.io", state.getDefaultLang(), state.getDelimiter())
+        val message = bundle.message("error.io", state.getDefaultLangModel(), state.getDelimiter())
         Logger.getInstance(IOHandler::class.java).error(message, ex)
     }
 

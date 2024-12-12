@@ -43,7 +43,7 @@ internal class KeyCompletionProvider : CompletionProvider<CompletionParameters>(
 
     private fun constructLookup(translation: Translation, settings: ProjectSettingsState): LookupElement {
         val converter = KeyPathConverter(settings)
-        val defaultLang = settings.getDefaultLang()
+        val defaultLang = settings.getDefaultLangModel()
 
         return LookupElementBuilder
             .create(converter.toString(translation.key))

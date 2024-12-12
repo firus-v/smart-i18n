@@ -50,7 +50,7 @@ abstract class AbstractFoldingBuilder : FoldingBuilderEx(), OptionalAssistance {
 
         for (region in extractRegions(root)) {
             val key = region.first
-            if(key === null){
+            if(key === null || !settings.getShowFoldingTranslate()){
                 continue
             }
             val psiElement = region.second
@@ -65,7 +65,7 @@ abstract class AbstractFoldingBuilder : FoldingBuilderEx(), OptionalAssistance {
                 psiElement.textRange.endOffset - 1
             )
 
-            val isAlwaysFold = settings.getShowFoldingTranslate() && settings.getAlwaysFoldingTranslate()
+            val isAlwaysFold = settings.getAlwaysFoldingTranslate()
 
             // Некоторые реализации языков, такие как [Vue Template], не поддерживают FoldingGroup
             val descriptor = FoldingDescriptor(
@@ -95,7 +95,7 @@ abstract class AbstractFoldingBuilder : FoldingBuilderEx(), OptionalAssistance {
             return null
         }
 
-        val previewLocale = ProjectSettingsService.get(project).state.getDefaultLang().selectedItem.toString()
+        val previewLocale = ProjectSettingsService.get(project).state.getDefaultLangModel().selectedItem.toString()
         return localeValues.get(previewLocale)
     }
 

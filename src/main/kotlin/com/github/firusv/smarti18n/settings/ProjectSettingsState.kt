@@ -25,7 +25,23 @@ open class ProjectSettingsState {
     private var deeplApiKey: String = ""
 
 
-    fun setFileList(model: ListModel<VirtualFile>) {
+    fun getFileList(): String {
+        return fileList
+    }
+
+    fun setFileList(fileList: String) {
+        this.fileList = fileList
+    }
+
+    fun getDefaultLang(): String {
+        return defaultLang
+    }
+
+    fun setDefaultLang(defaultLang: String) {
+        this.defaultLang = defaultLang
+    }
+
+    fun setFileListModel(model: ListModel<VirtualFile>) {
         val list = ArrayList<String>()
         for (index in 0 until model.size) {
             list.add(model.getElementAt(index).path)
@@ -33,7 +49,7 @@ open class ProjectSettingsState {
         fileList = list.joinToString(":fileSeparator:")
     }
 
-    fun setDefaultLang(model: ComboBoxModel<String>) {
+    fun setDefaultLangModel(model: ComboBoxModel<String>) {
         var index = ""
         if(model.selectedItem != null) {
             index = model.selectedItem.toString()
@@ -45,7 +61,7 @@ open class ProjectSettingsState {
         delimiter = value
     }
 
-    fun getDefaultLang(fileListModel: ListModel<VirtualFile> = getFileList()): ComboBoxModel<String> {
+    fun getDefaultLangModel(fileListModel: ListModel<VirtualFile> = getFileListModel()): ComboBoxModel<String> {
         val model = DefaultComboBoxModel<String>()
 
         for (index in 0 until fileListModel.size) {
@@ -58,11 +74,11 @@ open class ProjectSettingsState {
         return model
     }
 
-    fun getDefaultLangToString(): String{
+    fun getDefaultLangModelToString(): String{
         return defaultLang
     }
 
-    fun getFileList(): ListModel<VirtualFile> {
+    fun getFileListModel(): ListModel<VirtualFile> {
         val model = DefaultListModel<VirtualFile>()
         val list = fileList.split(":fileSeparator:").toTypedArray()
         for (index in list.indices) {
