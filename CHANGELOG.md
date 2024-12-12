@@ -5,6 +5,10 @@
 ## [Unreleased]
 ### Added
 
+## [1.0.2] - 12.12.2024
+### Fixed
+- Fix reload folding
+
 ## [1.0.1] - 12.12.2024
 ### Added
 - Added reload folding rules on "apply"

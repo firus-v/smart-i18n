@@ -35,30 +35,6 @@ class ProjectSettingsConfigurable(private val project: Project) : Configurable {
         val service = ProjectSettingsService.get(project)
         service.state = component.getState()
         InstanceManager.get(project).reload()
-
-        reloadFoldingModelForAllFiles(service.state)
-    }
-
-
-
-    fun reloadFoldingModelForAllFiles(state: ProjectSettingsState) {
-        ApplicationManager.getApplication().invokeLater {
-            val fileEditorManager = FileEditorManager.getInstance(project)
-            val openFiles = fileEditorManager.openFiles
-
-            val editorFactory = EditorFactory.getInstance()
-            val editors = editorFactory.allEditors
-
-            for (editor in editors) {
-                val foldingModel: FoldingModel = editor.foldingModel
-                foldingModel.runBatchFoldingOperation {
-                    foldingModel.allFoldRegions.forEach { region ->
-                        val showFolding = state.getShowFoldingTranslate() && state.getAlwaysFoldingTranslate()
-                        region.isExpanded = !showFolding
-                    }
-                }
-            }
-        }
     }
 
     override fun reset() {
