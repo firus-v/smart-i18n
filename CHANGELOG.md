@@ -4,6 +4,16 @@
 
 ## [Unreleased]
 
+## [1.1.0] - 17.12.2024
+
+### Added
+
+Added go to translate reference by Ctrl+Click 
+
+### Changes
+
+Added support platform version 243
+
 ## [1.0.5] - 12.12.2024
 
 ### Fixed

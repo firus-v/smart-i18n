@@ -1,6 +1,11 @@
 <idea-plugin>
     <extensions defaultExtensionNs="com.intellij">
 
+        <psi.referenceContributor
+                language="JavaScript"
+                implementation="com.github.firusv.smarti18n.assistance.reference.JsKeyReferenceContributor"
+        />
+
         <lang.foldingBuilder
                 language="JavaScript"
                 implementationClass="com.github.firusv.smarti18n.assistance.folding.JsFoldingBuilder"

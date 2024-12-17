@@ -1,7 +1,6 @@
-package com.github.firusv.smarti18n.assistance.completion
+package com.github.firusv.smarti18n.assistance
 
 import com.github.firusv.smarti18n.settings.ProjectSettingsService
-import com.intellij.ide.startup.importSettings.data.SettingsService
 import com.intellij.openapi.project.Project
 import org.jetbrains.annotations.NotNull
 
@@ -12,5 +11,8 @@ import org.jetbrains.annotations.NotNull
 interface OptionalAssistance {
     fun isAssistance(@NotNull project: Project): Boolean {
         return ProjectSettingsService.get(project).state.getShowCodeAssistant()
+    }
+    fun isReference(@NotNull project: Project): Boolean {
+        return ProjectSettingsService.get(project).state.getIsReferenceEnabled()
     }
 }

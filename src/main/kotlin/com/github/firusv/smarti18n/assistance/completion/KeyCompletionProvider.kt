@@ -1,6 +1,7 @@
 package com.github.firusv.smarti18n.assistance.completion
 
 import com.github.firusv.smarti18n.InstanceManager
+import com.github.firusv.smarti18n.assistance.OptionalAssistance
 import com.github.firusv.smarti18n.model.Translation
 import com.github.firusv.smarti18n.settings.ProjectSettingsService
 import com.github.firusv.smarti18n.settings.ProjectSettingsState

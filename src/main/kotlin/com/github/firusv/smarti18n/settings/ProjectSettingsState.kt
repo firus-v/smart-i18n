@@ -20,6 +20,7 @@ open class ProjectSettingsState {
     private var showFoldingTranslate: Boolean = true
     private var alwaysFoldingTranslate: Boolean = false
     private var showCodeAssistant: Boolean = true
+    private var isReferenceEnabled: Boolean = true
 
     private var deeplEnabled: Boolean = false
     private var deeplApiKey: String = ""
@@ -158,6 +159,14 @@ open class ProjectSettingsState {
 
     fun setDeeplApiKey(v: String) {
         deeplApiKey = v
+    }
+
+    fun getIsReferenceEnabled(): Boolean{
+        return isReferenceEnabled
+    }
+
+    fun setIsReferenceEnabled(value: Boolean){
+        isReferenceEnabled = value
     }
 
 

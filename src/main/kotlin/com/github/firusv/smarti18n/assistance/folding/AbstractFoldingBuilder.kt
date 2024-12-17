@@ -9,7 +9,7 @@ import com.intellij.openapi.util.TextRange
 import com.intellij.psi.PsiElement
 import com.github.firusv.smarti18n.DataStore
 import com.github.firusv.smarti18n.InstanceManager
-import com.github.firusv.smarti18n.assistance.completion.OptionalAssistance
+import com.github.firusv.smarti18n.assistance.OptionalAssistance
 import com.github.firusv.smarti18n.model.TranslationData
 import com.github.firusv.smarti18n.model.TranslationValue
 import com.github.firusv.smarti18n.settings.ProjectSettingsState

@@ -36,6 +36,9 @@ open class ProjectSettingsComponentState {
     // Автодополнение ключей перевода
     lateinit var showCodeAssistant: JCheckBox
 
+    // Переход по ссылкам
+    lateinit var isReferenceEnabled: JCheckBox
+
     // Включить автодополнение перевода через Deepl.com
     lateinit var deeplEnabled: JCheckBox
 
@@ -57,6 +60,7 @@ open class ProjectSettingsComponentState {
         showFoldingTranslate.isSelected = state.getShowFoldingTranslate()
         alwaysFoldingTranslate.isSelected = state.getAlwaysFoldingTranslate()
         showCodeAssistant.isSelected = state.getShowCodeAssistant()
+        isReferenceEnabled.isSelected = state.getIsReferenceEnabled()
 
         deeplEnabled.isSelected = state.getDeeplEnabled()
         deeplApiKey.text = state.getDeeplApiKey()
@@ -79,6 +83,7 @@ open class ProjectSettingsComponentState {
         state.setShowFoldingTranslate(showFoldingTranslate.isSelected)
         state.setAlwaysFoldingTranslate(alwaysFoldingTranslate.isSelected)
         state.setShowCodeAssistant(showCodeAssistant.isSelected)
+        state.setIsReferenceEnabled(isReferenceEnabled.isSelected)
 
         state.setDeeplEnabled(deeplEnabled.isSelected)
         state.setDeeplApiKey(deeplApiKey.text)

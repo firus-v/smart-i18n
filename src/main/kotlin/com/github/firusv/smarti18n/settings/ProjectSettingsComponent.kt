@@ -70,6 +70,8 @@ class ProjectSettingsComponent(private val project: Project) : ProjectSettingsCo
         alwaysFoldingTranslate.text = bundle.message("settings.view.alwaysFoldingTranslate")
         showCodeAssistant = JCheckBox()
         showCodeAssistant.text = bundle.message("settings.view.showCodeAssistant")
+        isReferenceEnabled = JCheckBox()
+        isReferenceEnabled.text = bundle.message("settings.view.isReferenceEnabled")
 
 
 
@@ -79,6 +81,7 @@ class ProjectSettingsComponent(private val project: Project) : ProjectSettingsCo
         form.addComponent(showFoldingTranslate)
         form.addComponent(alwaysFoldingTranslate)
         form.addComponent(showCodeAssistant)
+        form.addComponent(isReferenceEnabled)
 
         return form.panel
     }
