@@ -3,7 +3,6 @@ package com.github.firusv.smarti18n.assistance.reference
 import com.github.firusv.smarti18n.settings.ProjectSettingsService
 import com.intellij.json.psi.JsonFile
 import com.intellij.json.psi.JsonObject
-import com.intellij.lang.javascript.psi.JSLiteralExpression
 import com.intellij.openapi.util.TextRange
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiManager
@@ -15,13 +14,16 @@ class KeyPsiReference(
 ) : PsiReferenceBase<PsiElement>(element, TextRange(1, element.textLength - 1)) {
 
     override fun resolve(): PsiElement? {
+
         val project = element.project
-        val jsonFiles = ProjectSettingsService.get(project).state.getFileListModel()
+        val state = ProjectSettingsService.get(project).state
+        val jsonFiles = state.getFileListModel()
+        val delimiter = state.getDelimiter()
 
         for (index in 0 until jsonFiles.size) {
             val file = jsonFiles.getElementAt(index);
             val psiFile = PsiManager.getInstance(project).findFile(file) as? JsonFile ?: continue
-            val target = findKeyInJson(psiFile, key.split("."))
+            val target = findKeyInJson(psiFile, key.split(delimiter))
             if (target != null) return target
         }
         return null

@@ -16,7 +16,7 @@ import org.jetbrains.annotations.NotNull
 import org.jetbrains.annotations.Nullable
 
 /**
- * Конкретный вкладчик ссылок для языковых ключей перевода.
+ * Абстрактный обработчик ссылок для ключей перевода.
  * @author firus-v
  */
 abstract class AbstractKeyReferenceContributor : PsiReferenceContributor(), OptionalAssistance {
@@ -42,11 +42,12 @@ abstract class AbstractKeyReferenceContributor : PsiReferenceContributor(), Opti
 
         // TODO: Нужно предоставлять несколько ссылок, если указана не конечная ветка (поддержка контекста/множественных чисел)
 
-        val path: KeyPath = converter.fromString(text)
-        val values: TranslationValue? = InstanceManager.get(project).store().getData().getTranslation(path)
+        val delimiter = settings.getDelimiter()
 
-        // Ссылаемся только на действительные и существующие переводы
-        if (values == null) {
+        val regex = """^([a-zA-Z_][a-zA-Z0-9_]*)(${delimiter}[a-zA-Z_][a-zA-Z0-9_]*)+$""".toRegex()
+
+        // Ссылаемся только на переводы
+        if (!text.matches(regex)) {
             return PsiReference.EMPTY_ARRAY
         }
 

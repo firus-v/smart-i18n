@@ -4,6 +4,12 @@
 
 ## [Unreleased]
 
+## [1.1.1] - 17.12.2024
+
+### Added
+
+Added check translation exist
+
 ## [1.1.0] - 17.12.2024
 
 ### Added
