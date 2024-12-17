@@ -1,5 +1,9 @@
 <idea-plugin>
     <extensions defaultExtensionNs="com.intellij">
+        <intentionAction>
+            <language>JavaScript</language>
+            <className>com.github.firusv.smarti18n.assistance.intention.JsTranslationIntention</className>
+        </intentionAction>
 
         <psi.referenceContributor
                 language="JavaScript"

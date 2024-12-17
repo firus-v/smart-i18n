@@ -44,7 +44,7 @@ abstract class AbstractKeyReferenceContributor : PsiReferenceContributor(), Opti
 
         val delimiter = settings.getDelimiter()
 
-        val regex = """^([a-zA-Z_][a-zA-Z0-9_]*)(${delimiter}[a-zA-Z_][a-zA-Z0-9_]*)+$""".toRegex()
+        val regex = """^([a-zA-Z_][a-zA-Z0-9_]*)([${delimiter}][a-zA-Z_][a-zA-Z0-9_]*)+$""".toRegex()
 
         // Ссылаемся только на переводы
         if (!text.matches(regex)) {
