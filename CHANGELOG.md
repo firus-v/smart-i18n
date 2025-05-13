@@ -2,7 +2,12 @@
 
 # smart-i18n Changelog
 
-## [Unreleased]
+## [1.2.0] - 13.05.2025
+
+### Fixed
+
+- Fix setting selected default language on settings page
+- Fix JSON parser for json arrays
 
 ## [1.1.2] - 17.12.2024
 
