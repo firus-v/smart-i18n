@@ -9,8 +9,6 @@ import com.intellij.notification.NotificationType
 import com.intellij.notification.Notifications
 import com.intellij.openapi.diagnostic.Logger
 import com.intellij.openapi.project.Project
-import java.text.MessageFormat
-import java.util.*
 
 /**
  * Утилита для создания уведомлений с подробной информацией, такой как трассировка исключений.

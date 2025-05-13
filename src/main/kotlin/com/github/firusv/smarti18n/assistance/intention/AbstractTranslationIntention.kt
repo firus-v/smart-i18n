@@ -20,7 +20,6 @@ import com.github.firusv.smarti18n.model.KeyPath
 import com.github.firusv.smarti18n.model.Translation
 import com.github.firusv.smarti18n.settings.ProjectSettingsService
 import com.github.firusv.smarti18n.util.KeyPathConverter
-import java.util.ResourceBundle
 import org.jetbrains.annotations.NotNull
 import org.jetbrains.annotations.Nullable
 

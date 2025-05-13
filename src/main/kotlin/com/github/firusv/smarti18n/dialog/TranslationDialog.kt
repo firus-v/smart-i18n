@@ -8,7 +8,6 @@ import com.intellij.util.Consumer
 import com.intellij.util.ui.FormBuilder
 import com.github.firusv.smarti18n.InstanceManager
 import com.github.firusv.smarti18n.MessagesBundle
-import com.github.firusv.smarti18n.model.KeyPath
 import com.github.firusv.smarti18n.model.Translation
 import com.github.firusv.smarti18n.model.TranslationValue
 import com.github.firusv.smarti18n.model.action.TranslationUpdate
@@ -18,7 +17,6 @@ import com.github.firusv.smarti18n.util.KeyPathConverter
 import javax.swing.*
 import javax.swing.border.EtchedBorder
 import java.awt.*
-import java.util.*
 
 /**
  * Базовый класс для диалогов добавления и редактирования переводов.

@@ -1,11 +1,9 @@
 package com.github.firusv.smarti18n.tabs.mapper
 
 import com.github.firusv.smarti18n.model.KeyPath
-import com.github.firusv.smarti18n.model.Translation
 import com.github.firusv.smarti18n.model.TranslationData
 import com.github.firusv.smarti18n.model.TranslationNode
 import com.github.firusv.smarti18n.settings.ProjectSettingsState
-import com.github.firusv.smarti18n.util.TranslationUtil
 import com.github.firusv.smarti18n.util.UiUtil
 import com.intellij.ide.projectView.PresentationData
 import com.intellij.ui.JBColor

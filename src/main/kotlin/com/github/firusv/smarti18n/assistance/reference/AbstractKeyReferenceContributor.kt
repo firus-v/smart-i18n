@@ -4,11 +4,7 @@ import com.intellij.openapi.project.Project
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiReference
 import com.intellij.psi.PsiReferenceContributor
-import com.github.firusv.smarti18n.InstanceManager
 import com.github.firusv.smarti18n.assistance.OptionalAssistance
-import com.github.firusv.smarti18n.model.KeyPath
-import com.github.firusv.smarti18n.model.Translation
-import com.github.firusv.smarti18n.model.TranslationValue
 import com.github.firusv.smarti18n.settings.ProjectSettingsState
 import com.github.firusv.smarti18n.settings.ProjectSettingsService
 import com.github.firusv.smarti18n.util.KeyPathConverter

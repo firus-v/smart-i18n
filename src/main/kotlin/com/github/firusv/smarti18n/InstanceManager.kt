@@ -1,18 +1,10 @@
 package com.github.firusv.smarti18n
 
 import com.github.firusv.smarti18n.model.action.TranslationUpdate
-import com.github.firusv.smarti18n.settings.ProjectSettingsState
-import com.intellij.codeInsight.daemon.DaemonCodeAnalyzer
-import com.intellij.database.statistic.DatabaseUsagesCollectors.SettingsState
 import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.project.Project
 import org.jetbrains.annotations.NotNull
 import java.util.*
-import com.intellij.openapi.editor.FoldingModel
-import com.intellij.openapi.fileEditor.FileEditorManager
-
-import com.intellij.openapi.editor.EditorFactory
-import com.intellij.openapi.fileEditor.TextEditor
 
 /**
  * Центральный синглтон для управления экземпляром smart-i18n для конкретного проекта.
