@@ -184,6 +184,7 @@ class ProjectSettingsComponent(private val project: Project) : ProjectSettingsCo
         defaultLang.model = DefaultComboBoxModel()
         defaultLang.setToolTipText(bundle.message("settings.translate.defaultLang.tooltip"))
         defaultLang.setMinimumAndPreferredWidth(200)
+        defaultLang.model.selectedItem="en"
 
         return defaultLang
     }

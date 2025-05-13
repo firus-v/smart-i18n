@@ -4,6 +4,7 @@ import com.intellij.openapi.ui.ComboBox
 import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.ui.components.JBList
 import com.intellij.ui.components.JBTextField
+import javax.swing.DefaultComboBoxModel
 import javax.swing.JButton
 import javax.swing.JCheckBox
 
@@ -92,8 +93,17 @@ open class ProjectSettingsComponentState {
     }
 
     fun updateDefaultLang() {
-        val state = ProjectSettingsState()
-        defaultLang.model = state.getDefaultLangModel(fileList.model)
+
+        val model = DefaultComboBoxModel<String>()
+        for (index in 0 until fileList.model.size) {
+            val value = fileList.model.getElementAt(index).nameWithoutExtension;
+            model.addElement(value)
+            if(value == defaultLang.selectedItem){
+                model.selectedItem = defaultLang.selectedItem
+            }
+        }
+
+        defaultLang.model = model
         if (defaultLang.model.size > 1) {
             for (index in 0 until defaultLang.model.size) {
                 if (defaultLang.model.getElementAt(index) == "") {

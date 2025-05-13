@@ -59,8 +59,7 @@ abstract class ArrayMapper {
      */
     protected fun write(concat: String, writeElement: Consumer<String>) {
         val data = concat.substring(PREFIX.length, concat.length - SUFFIX.length)
-
-        data.split(SPLITERATOR_REGEX).forEach { element ->
+        data.split(DELIMITER).forEach { element ->
             val unescapedElement = element.replace("\\" + DELIMITER, DELIMITER.toString())
             writeElement.accept(StringEscapeUtils.unescapeJava(unescapedElement))
         }
