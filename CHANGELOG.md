@@ -4,6 +4,12 @@
 
 ## [Unreleased]
 
+## [1.2.1] - 13.05.2025
+
+### Dependencies
+
+- Update intelliJPlatform
+
 ## [1.2.0] - 13.05.2025
 
 ### Fixed
