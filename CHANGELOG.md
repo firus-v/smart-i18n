@@ -109,7 +109,8 @@
 
 - Added basic plugin settings panel
 
-[Unreleased]: https://github.com/firus-v/smart-i18n/compare/v1.2.0...HEAD
+[Unreleased]: https://github.com/firus-v/smart-i18n/compare/v1.2.1...HEAD
+[1.2.1]: https://github.com/firus-v/smart-i18n/compare/v1.2.0...v1.2.1
 [1.2.0]: https://github.com/firus-v/smart-i18n/compare/v1.1.2...v1.2.0
 [1.1.2]: https://github.com/firus-v/smart-i18n/compare/v1.1.1...v1.1.2
 [1.1.1]: https://github.com/firus-v/smart-i18n/compare/v1.1.0...v1.1.1
