@@ -20,7 +20,6 @@ import com.intellij.util.Consumer
 import java.awt.Component
 import java.net.URLEncoder
 import java.nio.charset.StandardCharsets
-import java.util.*
 
 /**
  * Отправка отчета об ошибках в репозиторий проекта, если происходят исключения.

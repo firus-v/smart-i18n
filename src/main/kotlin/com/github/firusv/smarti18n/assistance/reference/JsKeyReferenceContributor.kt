@@ -1,7 +1,6 @@
 package com.github.firusv.smarti18n.assistance.reference
 
 import com.intellij.lang.javascript.psi.JSLiteralExpression
-import com.intellij.openapi.project.Project
 import com.intellij.patterns.PlatformPatterns
 import com.intellij.patterns.StandardPatterns
 import com.intellij.psi.PsiElement

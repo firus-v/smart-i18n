@@ -1,7 +1,6 @@
 package com.github.firusv.smarti18n.service
 
 import com.github.firusv.smarti18n.InstanceManager
-import com.github.firusv.smarti18n.model.TranslationFile
 import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.diagnostic.Logger
 import com.intellij.openapi.project.Project
@@ -10,7 +9,6 @@ import com.intellij.openapi.vfs.LocalFileSystem
 import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.openapi.vfs.newvfs.events.VFileEvent
 import org.jetbrains.annotations.NotNull
-import org.jetbrains.annotations.Nullable
 import java.io.File
 import java.util.ArrayList
 import javax.swing.ListModel

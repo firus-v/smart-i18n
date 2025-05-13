@@ -3,7 +3,6 @@ package com.github.firusv.smarti18n.settings
 import com.github.firusv.smarti18n.MessagesBundle
 import com.intellij.openapi.fileChooser.FileChooser
 import com.intellij.openapi.fileChooser.FileChooserDescriptor
-import com.intellij.openapi.observable.util.addListDataListener
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.ui.ComboBox
 import com.intellij.openapi.vfs.VirtualFile

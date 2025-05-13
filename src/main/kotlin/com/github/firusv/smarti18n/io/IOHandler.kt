@@ -10,15 +10,10 @@ import com.github.firusv.smarti18n.model.TranslationData
 import com.github.firusv.smarti18n.settings.ProjectSettingsState
 import com.github.firusv.smarti18n.util.NotificationHelper
 import com.intellij.codeInsight.actions.ReformatCodeProcessor
-import com.intellij.openapi.components.PathMacroManager
-import com.intellij.openapi.editor.Document
 import com.intellij.openapi.fileEditor.FileDocumentManager
 import com.intellij.openapi.project.Project
-import com.intellij.openapi.vfs.LocalFileSystem
-import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.psi.PsiDocumentManager
 import com.intellij.psi.PsiFile
-import java.io.File
 import java.io.IOException
 
 /**

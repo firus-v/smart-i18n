@@ -1,10 +1,6 @@
 package com.github.firusv.smarti18n.settings
 
 import com.github.firusv.smarti18n.InstanceManager
-import com.intellij.openapi.application.ApplicationManager
-import com.intellij.openapi.editor.EditorFactory
-import com.intellij.openapi.editor.FoldingModel
-import com.intellij.openapi.fileEditor.FileEditorManager
 import com.intellij.openapi.options.Configurable
 import com.intellij.openapi.project.Project
 import javax.swing.JComponent

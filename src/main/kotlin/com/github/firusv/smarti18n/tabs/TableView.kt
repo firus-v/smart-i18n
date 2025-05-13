@@ -20,7 +20,6 @@ import com.intellij.ui.components.JBScrollPane
 import com.intellij.ui.table.JBTable
 import org.jetbrains.annotations.NotNull
 import java.awt.*
-import java.util.*
 import javax.swing.*
 /**
  * Отображает состояние переводов в виде таблицы.
