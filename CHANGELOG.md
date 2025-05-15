@@ -4,6 +4,13 @@
 
 ## [Unreleased]
 
+## [1.3.0] - 15.05.2025
+
+### Dependencies
+
+- Added support 2025.1 Intellij version
+
+
 ## [1.2.1] - 13.05.2025
 
 ### Dependencies
