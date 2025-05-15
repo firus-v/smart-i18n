@@ -34,6 +34,8 @@ jobs:
       # Build plugin
       - name: Build plugin
         run: gh cache delete --all --succeed-on-no-caches
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   # Prepare environment and build the plugin
   build:
