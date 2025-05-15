@@ -1,8 +1,8 @@
 package com.github.firusv.smarti18n.assistance.reference
 
 import com.github.firusv.smarti18n.settings.ProjectSettingsService
-import com.intellij.modules.json.psi.JsonFile
-import com.intellij.modules.json.psi.JsonObject
+import com.intellij.json.psi.JsonFile
+import com.intellij.json.psi.JsonObject
 import com.intellij.openapi.util.TextRange
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiManager

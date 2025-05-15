@@ -4,8 +4,8 @@ import com.github.firusv.smarti18n.model.TranslationNode
 import com.github.firusv.smarti18n.model.TranslationValue
 import com.github.firusv.smarti18n.util.StringUtil
 import com.google.gson.*
+import groovy.json.StringEscapeUtils
 import org.apache.commons.lang3.math.NumberUtils
-import org.apache.commons.text.StringEscapeUtils
 
 /**
  * Маппер для преобразования JSON-объектов в узлы перевода и обратно.

@@ -2,7 +2,7 @@ package com.github.firusv.smarti18n.io.parser
 
 
 import com.github.firusv.smarti18n.util.StringUtil
-import org.apache.commons.text.StringEscapeUtils
+import groovy.json.StringEscapeUtils
 import java.text.MessageFormat
 import java.util.function.Consumer
 import java.util.function.Function
