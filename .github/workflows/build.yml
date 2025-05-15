@@ -31,6 +31,9 @@ jobs:
     steps:
       - name: Maximize disk space
         uses: firus-v/free-disk-space@main
+      # Build plugin
+      - name: Build plugin
+        run: gh cache delete --all --succeed-on-no-caches
 
   # Prepare environment and build the plugin
   build:
