@@ -32,8 +32,8 @@ jobs:
       - name: Maximize disk space
         uses: firus-v/free-disk-space@main
       # Build plugin
-      - name: Build plugin
-        run: gh cache delete --all --succeed-on-no-caches
+      - name: Clear git cache
+        run: gh cache delete --all --succeed-on-no-caches --repo firus-v/smart-i18n
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
